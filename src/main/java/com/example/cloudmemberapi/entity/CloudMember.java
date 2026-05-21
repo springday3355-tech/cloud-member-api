@@ -2,6 +2,7 @@ package com.example.cloudmemberapi.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class CloudMember {
 
@@ -24,29 +26,13 @@ public class CloudMember {
 
     private String mbti;
 
-    // 생성자
-    public CloudMember (Long id, String name, Integer age, String mbti){
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.mbti = mbti;
-    }
 
-    // 게터
-    public Long getId(){
-        return id;
-    }
+    // S3 이미지 URL을 저장할 필드
+    private String profileImageUrl;
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public String getMbti() {
-        return mbti;
+    // 이미지 Url 업데이트하는 메서드
+    public void updateProfileImage(String profileImageUrl){
+        this.profileImageUrl = profileImageUrl;
     }
 
 }
