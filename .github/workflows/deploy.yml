@@ -41,6 +41,7 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cloud-member-api:latest
+          platforms: linux/amd64
 
       # 6. EC2에 원격 접속하여 Docker 이미지 pull 받고 실행하기
       - name: Deploy to EC2 via SSH
