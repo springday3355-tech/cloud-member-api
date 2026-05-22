@@ -20,3 +20,11 @@
 -> ![img_5.png](img_5.png)
 - 스크릿샷 2번
 -> ![img_6.png](img_6.png)
+
+# Lv.4
+
+1. Github Actions 성공이미지
+- ![img_7.png](img_7.png)
+
+2. EC2 터미널 이미지
+- 

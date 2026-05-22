@@ -1,4 +1,4 @@
-FROM amazoncorretto:17-al2023-headless
+FROM --platform=linux/amd64 openjdk:17-jdk-slim
 WORKDIR /app
 COPY build/libs/*-SNAPSHOT.jar app.jar
 EXPOSE 8080
