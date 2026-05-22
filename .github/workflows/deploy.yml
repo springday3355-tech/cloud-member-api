@@ -48,7 +48,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} "
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} "
             sudo docker stop cloud-member-api-container || true
             sudo docker rm cloud-member-api-container || true
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/cloud-member-api:latest
