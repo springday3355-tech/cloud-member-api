@@ -44,21 +44,14 @@ jobs:
 
       # 6. EC2에 원격 접속하여 Docker 이미지 pull 받고 실행하기
       - name: Deploy to EC2 via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_KEY }}
-          script: |
-            # 옛날에 돌던 도커 컨테이너가 있다면 끄고 삭제합니다.
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} "
             sudo docker stop cloud-member-api-container || true
             sudo docker rm cloud-member-api-container || true
-            
-            # Docker Hub에서 방금 올린 새 이미지를 다운받습니다.
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/cloud-member-api:latest
-            
-            # 미사용 이미지(안 쓰는 옛날 이미지)를 정리해서 EC2 용량을 확보합니다.
             sudo docker image prune -f
-            
-            # 8080 포트로 새 도커 컨테이너를 백그라운드에서 실행합니다!
             sudo docker run -d -p 8080:8080 --name cloud-member-api-container ${{ secrets.DOCKERHUB_USERNAME }}/cloud-member-api:latest
+          "
