@@ -47,7 +47,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ec2-user
+          username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
             # 옛날에 돌던 도커 컨테이너가 있다면 끄고 삭제합니다.
