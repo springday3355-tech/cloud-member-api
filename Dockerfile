@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine
+FROM amazoncorretto:17-alpine
 WORKDIR /app
 COPY build/libs/*-SNAPSHOT.jar app.jar
 EXPOSE 8080
