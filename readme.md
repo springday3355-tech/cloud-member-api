@@ -24,7 +24,7 @@
 # Lv.4
 
 1. Github Actions 성공이미지
-- ![img_7.png](img_7.png)
+- ![img_9.png](img_9.png)
 
 2. EC2 터미널 이미지
-- 
+- ![img_10.png](img_10.png)
